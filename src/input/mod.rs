@@ -1214,6 +1214,8 @@ impl State {
         let button_state = event.state();
 
         if ButtonState::Pressed == button_state {
+            // if event.button() == Some(MouseButton::Back) {
+            // smithay's mouse has back 0x116 and fw. 0x115 ...
             if button == 0x113 || button == 0x114 {
                 let config = self.niri.config.borrow();
                 let bindings = &config.binds;
@@ -1226,8 +1228,6 @@ impl State {
                 };
                 drop(config);
 
-                // smithay must have had a weird mouse, with back 0x116 and fw. 0x115
-                // if event.button() == Some(MouseButton::Back) {
                 if let Some(bind) = bind_extra {
                     self.handle_bind(bind.clone());
                 }
