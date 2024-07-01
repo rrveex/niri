@@ -1214,6 +1214,25 @@ impl State {
         let button_state = event.state();
 
         if ButtonState::Pressed == button_state {
+            if button == 0x113 || button == 0x114 {
+                let config = self.niri.config.borrow();
+                let bindings = &config.binds;
+                let comp_mod = self.backend.mod_key();
+                let mods = self.niri.seat.get_keyboard().unwrap().modifier_state();
+                let bind_extra = if button == 0x113 {
+                    find_configured_bind(bindings, comp_mod, Trigger::BtnBack, mods)
+                } else {
+                    find_configured_bind(bindings, comp_mod, Trigger::BtnForward, mods)
+                };
+                drop(config);
+
+                // smithay must have had a weird mouse, with back 0x116 and fw. 0x115
+                // if event.button() == Some(MouseButton::Back) {
+                if let Some(bind) = bind_extra {
+                    self.handle_bind(bind.clone());
+                }
+                return;
+            }
             if let Some(mapped) = self.niri.window_under_cursor() {
                 let window = mapped.window.clone();
 

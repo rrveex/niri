@@ -900,6 +900,8 @@ pub enum Trigger {
     WheelScrollUp,
     WheelScrollLeft,
     WheelScrollRight,
+    BtnBack,
+    BtnForward,
     TouchpadScrollDown,
     TouchpadScrollUp,
     TouchpadScrollLeft,
@@ -2308,6 +2310,10 @@ impl FromStr for Key {
             Trigger::WheelScrollLeft
         } else if key.eq_ignore_ascii_case("WheelScrollRight") {
             Trigger::WheelScrollRight
+        } else if key.eq_ignore_ascii_case("BtnBack") {
+            Trigger::BtnBack
+        } else if key.eq_ignore_ascii_case("BtnForward") {
+            Trigger::BtnForward
         } else if key.eq_ignore_ascii_case("TouchpadScrollDown") {
             Trigger::TouchpadScrollDown
         } else if key.eq_ignore_ascii_case("TouchpadScrollUp") {

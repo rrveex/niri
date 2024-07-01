@@ -416,6 +416,8 @@ fn key_name(comp_mod: CompositorMod, key: &Key) -> String {
         Trigger::WheelScrollUp => String::from("Wheel Scroll Up"),
         Trigger::WheelScrollLeft => String::from("Wheel Scroll Left"),
         Trigger::WheelScrollRight => String::from("Wheel Scroll Right"),
+        Trigger::BtnBack => String::from("Mouse Button Back"),
+        Trigger::BtnForward => String::from("Mouse Button Forward"),
         Trigger::TouchpadScrollDown => String::from("Touchpad Scroll Down"),
         Trigger::TouchpadScrollUp => String::from("Touchpad Scroll Up"),
         Trigger::TouchpadScrollLeft => String::from("Touchpad Scroll Left"),
